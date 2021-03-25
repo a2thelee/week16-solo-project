@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { environment } = require("./config");
 const app = express();
-const isProduction = environment === " production"
+const isProduction = environment === "production"
 const routes = require("./routes")
 const { ValidationError } = require('sequelize');
 

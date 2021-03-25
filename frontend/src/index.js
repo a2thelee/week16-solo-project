@@ -9,6 +9,7 @@ import { restoreCSRF, csrfFetch } from './store/csrf';
 
 const store = configureStore();
 
+//test comment
 if (process.env.NODE_ENV !== 'production') {
   restoreCSRF();
 

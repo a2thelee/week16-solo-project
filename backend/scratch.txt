@@ -1,3 +1,20 @@
-npx sequelize model:generate --name Users --attributes "username:string,email:string,hashedPassword:string"
+
+
+npx sequelize model:generate --name Venue --attributes "ownerId:integer,state:string,city:string,bookingImgUrl:string,description:text,openHours:date,closeHours:date,cost:integer"
+
+npx sequelize model:generate --name Reservation --attributes "reserverId:integer,venueId:integer,gameStart:date,gameEnd:date,games:text"
+
+npx sequelize model:generate --name Review --attributes "venueId:integer,rating:integer,authorId:integer,content:text"
 
 npx dotenv sequelize db:migrate:undo:all
+
+{
+        ownerId: "1",
+        state: Massachusetts,
+        city: 'Worcester,
+        bookingImgUrl: 'www.nothing.com',
+        desctiption: "awful place",
+        openHours: 9,
+        closeHours: 11,
+        cost: 40.00
+      },

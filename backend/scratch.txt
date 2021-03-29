@@ -1,1 +1,3 @@
 npx sequelize model:generate --name Users --attributes "username:string,email:string,hashedPassword:string"
+
+npx dotenv sequelize db:migrate:undo:all

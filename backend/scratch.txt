@@ -9,11 +9,13 @@ npx sequelize model:generate --name Review --attributes "venueId:integer,rating:
 npx dotenv sequelize db:migrate:undo:all
 
 {
-        ownerId: "1",
+        name: "the dump",
+        ownerId: 1,
+        address: "20 chandler street",
         state: Massachusetts,
-        city: 'Worcester,
+        city: "Worcester",
         bookingImgUrl: 'www.nothing.com',
-        desctiption: "awful place",
+        description: "awful place. i think i heard gunshots",
         openHours: 9,
         closeHours: 11,
         cost: 40.00

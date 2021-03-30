@@ -5,6 +5,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/Signup";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import Venues from "./components/Venues"
 
 function App() {
   const dispatch = useDispatch();

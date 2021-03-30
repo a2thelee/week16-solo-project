@@ -1,14 +1,18 @@
-import * as venueActions from "../../store/venues"
+import { getVenues } from "../../store/venues"
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react"
+import { useEffect } from "react";
+import "./Venues.css"
 
 function Venues() {
+  const sessionUser = useSelector(state => state.session.user)    //grab the session user
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(venueActions.getVenues())
+    dispatch(getVenues())
   }, [dispatch])
 
-  const venues = useSelector(state => state.list);
+  const venues = useSelector(state => {
+    return state.venue.list
+  });
 
   // const [title, setTitle] = useState("")
   // const [description, setDescription] = useState("")

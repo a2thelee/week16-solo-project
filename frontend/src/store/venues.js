@@ -1,7 +1,8 @@
-import { csrfFetch } from "./csrf"
-import { useDispatch } from "react-redux"
+import { csrfFetch } from './csrf';
 
-const LOAD = "venues/LOAD";
+
+const LOAD = 'venue/LOAD';
+
 
 const load = (list) => ({
   type: LOAD,
@@ -10,29 +11,28 @@ const load = (list) => ({
 
 const initialState = {
   list: []
-}
+};
 
 export const getVenues = () => async (dispatch) => {
-
-  const response = await csrfFetch("./api/venues");
+  const response = await csrfFetch('/api/venues');
 
   if (response.ok) {
     const list = await response.json();
-    dispatch(load(list)) //this is a return. sort of implicit
+    dispatch(load(list));
   }
-}
+};
 
 const venueReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD: {
-      const allvenues = {};
+      const allVenues = {};
       action.list.forEach((venue) => {
         allVenues[venue.id] = venue;
-      })
+      });
       return {
         ...allVenues,
         ...state,
-        //sort by rating possible?
+        list: action.list
       }
     }
     default:

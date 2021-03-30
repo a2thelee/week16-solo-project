@@ -102,18 +102,18 @@ module.exports = (sequelize, DataTypes) => {
     // User.hasMany(models.Venue, { foreignKey: 'ownerId' });
     // User.hasMany(models.Reservation, { foreignKey: "reserverId" });
     User.hasMany(models.Review, { foreignKey: "authorId", as: "writerId" })
-    User.hasMany(models.Venue, { foreignKey: "ownerId", as: "ownerId" })
+    User.hasMany(models.Venue, { foreignKey: "ownerId", as: "venueOwnerId" })
 
     User.belongsToMany(models.Venue, {
       through: "Reservations",
       otherKey: "venueId",
-      foreignKey: "reserverId", as: "reserverId"
+      foreignKey: "reserverId", as: "reserverPersonId"
     })
 
     User.belongsToMany(models.Venue, {
       through: "Reviews",
       otherKey: "venueId",
-      foreignKey: "authorId", as: "authorId"
+      foreignKey: "authorId", as: "reviewerId"
     })
   };
   return User;

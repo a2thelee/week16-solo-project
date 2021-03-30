@@ -42,7 +42,7 @@ module.exports = {
       },
       {
         name: "A&M Games",
-        ownerId: 4,
+        ownerId: 1,
         address: "78 rehobeth blvd",
         state: "Maine",
         city: "Thornton",
@@ -54,7 +54,7 @@ module.exports = {
       },
       {
         name: "Rick's House",
-        ownerId: 5,
+        ownerId: 2,
         address: "37 Montague road",
         state: "Massachusetts",
         city: "Springfield",
@@ -69,12 +69,8 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
 
-      Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
+    return queryInterface.bulkDelete('Venues', null, {});
+
   }
 };

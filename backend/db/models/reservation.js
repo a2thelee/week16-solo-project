@@ -8,6 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     games: DataTypes.TEXT
   }, {});
   Reservation.associate = function (models) {
+    // Reservation.belongsTo(models.User, { foreignKey: "reserverId" })
+    // Reservation.belongsTo(models.Venue, { foreignKey: "venueId" });
   };
   return Reservation;
 };

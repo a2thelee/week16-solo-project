@@ -2,7 +2,10 @@
 module.exports = (sequelize, DataTypes) => {
   const Venue = sequelize.define('Venue', {
     name: DataTypes.STRING,
-    ownerId: DataTypes.INTEGER,
+    ownerId: {
+      type: DataTypes.INTEGER,
+      references: { model: "Users" }
+    },
     address: DataTypes.STRING,
     state: DataTypes.STRING,
     city: DataTypes.STRING,
@@ -13,19 +16,21 @@ module.exports = (sequelize, DataTypes) => {
     cost: DataTypes.INTEGER
   }, {});
   Venue.associate = function (models) {
+    // Venue.hasMany(models.Review, { foreignKey: 'venueId' });
+    // Venue.belongsTo(models.User, { foreignKey: 'ownerId' });
     Venue.hasMany(models.Review, { foreignKey: "venueId", as: "location" })
-    Venue.belongsTo(models.User, { foreignKey: "ownerId" })
+    Venue.belongsTo(models.User, { foreignKey: "ownerId", as: "ownerId" })
 
     Venue.belongsToMany(models.User, {
       through: "Reservations",
       otherKey: "reserverId",
-      foreignKey: "VenueId"
+      foreignKey: "venueId", as: "reservedPlaceId"
     })
 
     Venue.belongsToMany(models.User, {
       through: "Reviews",
       otherKey: "authorId",
-      foreignKey: "VenueId"
+      foreignKey: "venueId", as: "reviewedPlaceId"
     })
   };
   return Venue;

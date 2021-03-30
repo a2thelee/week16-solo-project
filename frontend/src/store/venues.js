@@ -1,6 +1,5 @@
 import { csrfFetch } from './csrf';
 
-
 const LOAD = 'venue/LOAD';
 
 

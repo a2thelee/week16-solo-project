@@ -98,16 +98,16 @@ module.exports = (sequelize, DataTypes) => {
     return await User.scope("currentUser").findByPk(user.id);
   };
   User.associate = function (models) {
-    User.hasMany(models.Review, { foreignKey: "authorId" })
+    User.hasMany(models.Review, { foreignKey: "authorId", as: "writerId" })
     User.hasMany(models.Venue, { foreignKey: "ownerId" })
 
-    User.belongsToMany(models.Bathroom, {
+    User.belongsToMany(models.Venue, {
       through: "Reservations",
       otherKey: "venueId",
       foreignKey: "reserverId",
     })
 
-    User.belongsToMany(models.Bathroom, {
+    User.belongsToMany(models.Venue, {
       through: "Reviews",
       otherKey: "venueId",
       foreignKey: "authorId",

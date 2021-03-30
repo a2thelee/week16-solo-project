@@ -20,3 +20,19 @@ npx dotenv sequelize db:migrate:undo:all
         closeHours: 11,
         cost: 40.00
       },
+
+
+{
+  reserverId: 2,
+  venueId: 1,
+  gameStart: new Date(),
+  gameEnd: new Date(),
+  games: "Twilight Imperium, Root, DnD5e"
+}
+
+{
+  venueId: 1,
+  rating: 10,
+  authorId: 3,
+  content: "I'm pretty sure I saw a drug deal"
+}

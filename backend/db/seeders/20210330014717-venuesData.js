@@ -16,6 +16,54 @@ module.exports = {
         closeHours: new Date(),
         cost: 40.00
       },
+      {
+        name: "that's entertainment",
+        ownerId: 2,
+        address: "115 Park Ave",
+        state: "Massachusetts",
+        city: "Boston",
+        bookingImgUrl: 'www.nothing.com',
+        description: "looked like a real dungeon!",
+        openHours: new Date(),
+        closeHours: new Date(),
+        cost: 40.00
+      },
+      {
+        name: "my mom's basement",
+        ownerId: 3,
+        address: "33 main street",
+        state: "Massachusetts",
+        city: "Quincy",
+        bookingImgUrl: 'www.nothing.com',
+        description: "complementary meatloaf",
+        openHours: new Date(),
+        closeHours: new Date(),
+        cost: 40.00
+      },
+      {
+        name: "A&M Games",
+        ownerId: 4,
+        address: "78 rehobeth blvd",
+        state: "Maine",
+        city: "Thornton",
+        bookingImgUrl: 'www.nothing.com',
+        description: "Right by the water, but the salt destroyed our cards",
+        openHours: new Date(),
+        closeHours: new Date(),
+        cost: 40.00
+      },
+      {
+        name: "Rick's House",
+        ownerId: 5,
+        address: "37 Montague road",
+        state: "Massachusetts",
+        city: "Springfield",
+        bookingImgUrl: 'www.nothing.com',
+        description: "TPK happened here",
+        openHours: new Date(),
+        closeHours: new Date(),
+        cost: 40.00
+      },
     ], {});
 
   },

@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Venue = sequelize.define('Venue', {
-    name: DataTypes.String,
+    name: DataTypes.STRING,
     ownerId: DataTypes.INTEGER,
     address: DataTypes.STRING,
     state: DataTypes.STRING,
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     cost: DataTypes.INTEGER
   }, {});
   Venue.associate = function (models) {
-    Venue.hasMany(models.Review, { foreignKey: "venueId" })
+    Venue.hasMany(models.Review, { foreignKey: "venueId", as: "location" })
     Venue.belongsTo(models.User, { foreignKey: "ownerId" })
 
     Venue.belongsToMany(models.User, {

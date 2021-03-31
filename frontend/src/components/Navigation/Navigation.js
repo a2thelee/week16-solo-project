@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import { getSearch } from "../../store/search"
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getSearch("Massachusetts"))
+
+  }, [dispatch])
 
   let sessionLinks;
+
   if (sessionUser) {
     sessionLinks = (
       <ProfileButton user={sessionUser} />

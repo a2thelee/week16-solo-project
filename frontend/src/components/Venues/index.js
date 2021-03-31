@@ -1,6 +1,7 @@
 import { getVenues } from "../../store/venues"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom"
 import "./Venues.css"
 
 function Venues() {
@@ -17,17 +18,21 @@ function Venues() {
   // const [title, setTitle] = useState("")
   // const [description, setDescription] = useState("")
 
+  if (!venues) return null;
+
   return (
-    <div className="venueContainer">
-      <h2>Hi this is Venues!</h2>
+    <div id='venueContainer'>
       <ul>
-        {venues.map(venue => {
-          <li key={venue.id}>{venue}</li>
-        })}
+        {Object.values(venues).map(venue => (
+          <li key={`li-${venue.id}`}>
+            <NavLink to={`/venues/${venue.id}`} key={venue.id}>
+              {/* this will be the venue image eventually*/}
+              {venue.title}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </div>
-
-
   )
 }
 

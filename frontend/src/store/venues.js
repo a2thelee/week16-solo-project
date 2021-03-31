@@ -52,14 +52,22 @@ const venueReducer = (state = initialState, action) => {
       action.list.forEach((venue) => {
         allVenues[venue.id] = venue;
       });
-      return {
-        ...allVenues,
-        ...state,
-        list: action.list
-      }
+      // return {
+      //   ...allVenues,
+      //   ...state,
+      //   list: action.list
+      // }
+
+      return allVenues;
     }
     default:
       return state;
+    case LOADONE: {
+      return {
+        ...state,
+        [action.venue.id]: action.venue,
+      }
+    }
   }
 }
 

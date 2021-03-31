@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import { getSearch } from "../../store/search"
+// import { getSearch } from "../../store/search"
+import { getVenues } from "../../store/venues"
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -10,7 +11,7 @@ function Navigation({ isLoaded }) {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getSearch("Massachusetts"))
+    dispatch(getVenues())
 
   }, [dispatch])
 

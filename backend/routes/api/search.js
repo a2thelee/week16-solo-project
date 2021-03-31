@@ -12,10 +12,19 @@ router.get('/:id', asyncHandler(async (req, res) => {                       //ch
   // console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
   const venues = await Venue.findAll({
     where: {
-      state: { [Op.iLike]: `%${userSearchInput}%` }                 //find all in a state?
+      [Op.or]: {
+        state: {
+          [Op.iLike]: `%${userSearchInput}`
+        },
+        city: {
+          [Op.iLike]: `%${userSearchInput}`
+        }
+      }
     }
   })
+  console.log(venues)
   return res.json(venues);
+
 }))
 
 module.exports = router;

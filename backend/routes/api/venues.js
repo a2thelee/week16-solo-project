@@ -15,7 +15,7 @@ router.get('', asyncHandler(async (req, res) => {
 
 //backend get for one venue, after a user clicks on one
 router.get("/:id", asyncHandler(async (req, res) => {
-  const venue = await db.Venue.findByPK(id);
+  const venue = await db.Venue.findByPK(req.params.id);
 
   return res.json(venue);
 }))

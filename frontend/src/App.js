@@ -6,6 +6,7 @@ import SignupFormPage from "./components/Signup";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Venues from "./components/Venues"
+import SingleVenue from "./components/singleVenue";
 
 function App() {
   const dispatch = useDispatch();

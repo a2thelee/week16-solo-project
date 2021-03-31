@@ -2,7 +2,7 @@ import React from 'react';
 import { getSearch } from '../../store/search';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Route, useParams } from 'react-router-dom';
+import { NavLink, Route, useParams, useHistory } from 'react-router-dom';
 import './search.css';
 
 const SearchBar = () => {

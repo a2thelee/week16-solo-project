@@ -1,49 +1,51 @@
-import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import ProfileButton from './ProfileButton';
-// import { getSearch } from "../../store/search"
-import { getVenues } from "../../store/venues"
-import './Navigation.css';
+// import React, { useEffect } from 'react';
+// import { NavLink } from 'react-router-dom';
+// import { useSelector, useDispatch } from 'react-redux';
+// import ProfileButton from './ProfileButton';
+// // import { getSearch } from "../../store/search"
+// import { getVenues } from "../../store/venues"
+// import './Navigation.css';
 
-function Navigation({ isLoaded }) {
-  const sessionUser = useSelector(state => state.session.user);
-  const dispatch = useDispatch()
+// function Navigation({ isLoaded }) {
+//   const sessionUser = useSelector(state => state.session.user);
+//   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(getVenues())
+//   useEffect(() => {
+//     dispatch(getVenues())
 
-  }, [dispatch])
+//   }, [dispatch])
 
-  let sessionLinks;
+//   let sessionLinks;
 
-  if (sessionUser) {
-    sessionLinks = (
-      <ProfileButton user={sessionUser} />
-    );
-  } else {
-    sessionLinks = (
-      <>
-        <div>
-          <NavLink to="/login">Log In</NavLink>
-          <NavLink to="/signup">Sign Up</NavLink>
-        </div>
+//   if (sessionUser) {
+//     sessionLinks = (
+//       <ProfileButton user={sessionUser} />
+//     );
+//   } else {
+//     sessionLinks = (
+//       <div className="navbar">
 
-        <div>
-          <NavLink to='/venues' id='venuesLink'>Venues</NavLink>
-        </div>
-      </>
-    );
-  }
+//         <div>
+//           <NavLink to="/login">Log In</NavLink>
+//           <NavLink to="/signup">Sign Up</NavLink>
+//         </div>
 
-  return (
-    <ul>
-      <li>
-        <NavLink exact to="/">AirTTG</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
-  );
-}
+//         <div>
+//           <NavLink to='/venues' id='venuesLink'>Venues</NavLink>
+//         </div>
 
-export default Navigation;
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <ul>
+//       <li>
+//         <NavLink exact to="/">AirTTG</NavLink>
+//         {isLoaded && sessionLinks}
+//       </li>
+//     </ul>
+//   );
+// }
+
+// export default Navigation;

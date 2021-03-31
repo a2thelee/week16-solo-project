@@ -1,1 +1,14 @@
 /* TODO Add site wide styles */
+body {
+  background-color: #94b5c0
+}
+
+#wallpaper {
+  position: relative;
+  top: 90px;
+  left: 140px;
+  opacity: .8;
+  max-width: 75%;
+  max-height: 90%;
+  border-radius: 10px;
+}

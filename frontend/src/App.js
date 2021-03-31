@@ -7,6 +7,8 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Venues from "./components/Venues"
 import SingleVenue from "./components/singleVenue";
+import wallhaven from "./images/wallhaven.jpg"
+import "./index.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +35,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <img src={wallhaven} alt="Board Game" id="wallpaper" />
     </>
   );
 }

@@ -11,19 +11,20 @@ const load = list => ({
 
 // ********* THUNK ********** //
 
-export const getSearch = (params) => async dispatch => {
+export const getSearch = (param) => async dispatch => {
 
   const response = await fetch(`/api/search/${param}`);
 
   if (response.ok) {
     const list = await response.json();
+    dispatch(load(list))
     return list;
   }
 }
 
 // ***** REDUCER ******* //
-const initalState = {       //let search results be in an array?
-  search =[]
+const initialState = {       //let search results be in an array?
+  search: []
 }
 
 const searchReducer = (state = initialState, action) => {
@@ -37,3 +38,5 @@ const searchReducer = (state = initialState, action) => {
       return state;
   }
 }
+
+export default searchReducer;

@@ -39,7 +39,7 @@ export const getOneVenue = (id) => async (dispatch) => {
 
   if (response.ok) {
     const venue = await response.json();
-    dispatch(loadone(venue));
+    dispatch(loadOne(venue));
   }
 }
 

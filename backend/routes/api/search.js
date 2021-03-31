@@ -1,11 +1,12 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
 const { Venue } = require('../../db/models');
-const { Sequelize, Op } = require("sequelize")
+const Sequelize = require("sequelize")
+const Op = Sequelize.Op
 const router = express.Router();
 
 
-router.get('/search', asyncHandler(async (req, res) => {                       //check with nat what our path will want to be... /:id?
+router.get('/:id', asyncHandler(async (req, res) => {                       //check with nat what our path will want to be... /:id?
 
   const userSearchInput = req.params.id
 

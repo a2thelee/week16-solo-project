@@ -2,6 +2,7 @@ import { getOneVenue } from "../../store/venues"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"
+import "./SingleVenue.css"
 
 const SingleVenue = () => {
   const dispatch = useDispatch();

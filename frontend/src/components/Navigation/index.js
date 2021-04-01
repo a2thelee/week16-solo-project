@@ -45,6 +45,7 @@ function Navigation({ isLoaded }) {
       <>
         <SearchBar />
       </>
+
       <li>
         <NavLink exact to="/">AirTTG</NavLink>
         {isLoaded && sessionLinks}

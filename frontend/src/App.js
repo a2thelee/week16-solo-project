@@ -7,6 +7,8 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Venues from "./components/Venues"
 import SingleVenue from "./components/singleVenue";
+import SearchListPage from "./components/searchListPage"
+
 import wallhaven from "./images/wallhaven.jpg"
 import "./index.css";
 
@@ -23,16 +25,27 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/login">
+
+          <Route exact path="/login">
             <LoginFormPage />
           </Route>
-          <Route path="/signup">
+
+          <Route exact path="/signup">
             <SignupFormPage />
           </Route>
 
-          <Route path="/venues">
+          <Route exact path="/venues">
             <Venues />
           </Route>
+
+          <Route exact path="/venues:id">
+            <SingleVenue />
+          </Route>
+
+          <Route exact path="/list">
+            <SearchListPage />
+          </Route>
+
         </Switch>
       )}
       <img src={wallhaven} alt="Board Game" id="wallpaper" />

@@ -13,7 +13,7 @@ const SearchBar = () => {
   const submit = (e) => {
     e.preventDefault();
     dispatch(getSearch(keyword));
-    //get mimi
+    history.push("/feed")
   }
 
 
@@ -25,14 +25,13 @@ const SearchBar = () => {
         onSubmit={(e) => submit(e)}>
 
         <input
-          type="search"
+          value={keyword}
           placeholder="Search By State"
           onChange={(e) => setKeyword(e.target.value)}>
 
         </input>
 
         <button onClick={(e) => submit(e)} type="submit">Find!</button>
-
       </form>
     </div>
   )

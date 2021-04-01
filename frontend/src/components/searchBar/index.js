@@ -1,19 +1,18 @@
-import React from 'react';
 import { getSearch } from '../../store/search';
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Route, useParams, useHistory } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import './search.css';
 
 const SearchBar = () => {
-  const [keyword, setKeyword] = useState("")
+  const [keyword, setKeyword] = useState("")      //default search state is empty
   const history = useHistory()
   const dispatch = useDispatch();
 
   const submit = (e) => {
     e.preventDefault();
     dispatch(getSearch(keyword));
-    history.push("/feed")
+    history.push("/list")
   }
 
 

@@ -13,7 +13,7 @@ const load = list => ({
 
 export const getSearch = (param) => async dispatch => {
 
-  const response = await fetch(`/api/search/${param}`);
+  const response = await csrfFetch(`/api/search/${param}`);
 
   if (response.ok) {
     const list = await response.json();
@@ -26,10 +26,9 @@ export const getSearch = (param) => async dispatch => {
 
 const searchReducer = (state = [], action) => {
   switch (action.type) {
-    case LOAD: {
+    case LOAD:
       const newState = action.list;
       return newState
-    }
 
     default:
       return state;

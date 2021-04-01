@@ -5,13 +5,12 @@ import { NavLink } from "react-router-dom"
 import "./Venues.css"
 
 function Venues() {
-  const sessionUser = useSelector(state => state.session.user)    //grab the session user
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getVenues())
   }, [dispatch])
 
-  const venues = useSelector(state => {
+  const venues = useSelector(state => {     //grabs the current state of all our venues
     return state.venue.list
   });
 

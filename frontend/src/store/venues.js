@@ -3,11 +3,6 @@ import { csrfFetch } from './csrf';
 const LOAD = 'venues/LOAD';
 const LOADONE = "venues/LOADONE"
 
-const initialState = {
-  list: [],
-  singleItem: null,
-};
-
 
 // *************  ACTIONS ************* //
 
@@ -16,9 +11,9 @@ const load = (list) => ({
   list
 });
 
-const loadOne = (singleItem) => ({        //this action can be used to fetch a single review later, hence singleItem
+const loadOne = (venue) => ({
   type: LOADONE,
-  singleItem
+  venue
 })
 
 
@@ -35,7 +30,7 @@ export const getVenues = () => async (dispatch) => {
 
 export const getOneVenue = (id) => async (dispatch) => {
 
-  const response = await fetch(`/api/rentals/${id}`);
+  const response = await fetch(`/api/venues/${id}`);
 
   if (response.ok) {
     const venue = await response.json();
@@ -45,7 +40,7 @@ export const getOneVenue = (id) => async (dispatch) => {
 
 // ************** REDUCER **************** //
 
-const venueReducer = (state = initialState, action) => {
+const venueReducer = (state = null, action) => {
   switch (action.type) {
     case LOAD: {
       const allVenues = {};

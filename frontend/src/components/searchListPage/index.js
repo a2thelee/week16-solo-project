@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
-import venueReducer from "../../store/venues";
 import "./searchListPage.css"
 
 function SearchListPage() {

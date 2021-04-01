@@ -31,7 +31,7 @@ module.exports = {
       },
       bookingImgUrl: {
         allowNull: false,
-        type: Sequelize.STRING(255)
+        type: Sequelize.TEXT
       },
       description: {
         allowNull: false,

@@ -6,10 +6,11 @@ const Op = Sequelize.Op
 const router = express.Router();
 
 
-router.get('/:id', asyncHandler(async (req, res) => {                       //check with nat what our path will want to be... /:id?
+router.get('/:location', asyncHandler(async (req, res) => {
 
-  const userSearchInput = req.params.id
-  // console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
+  const userSearchInput = req.params.location
+  // console.log(userSearchInput, "hiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
+
   const venues = await Venue.findAll({
     where: {
       [Op.or]: {

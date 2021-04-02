@@ -4,13 +4,15 @@ import sessionReducer from "./session"
 import venueReducer from "./venues"
 import searchReducer from "./search"
 import reservationReducer from "./reservations"
+import reviewReducer from "./reviews"
 
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
   venue: venueReducer,
   search: searchReducer,
-  reservation: reservationReducer
+  reservation: reservationReducer,
+  reviews: reviewReducer
 });
 
 let enhancer;

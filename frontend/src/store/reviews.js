@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf"
 const GETREVS = "reviews/GETREVS"
 const SETREV = "reviews/SETREV"
 const EDITREV = "reviews/EDITREV"
+const DELETEREV = "reviews/DELETEREV"
 
 // *********** REVIEW ACTIONS *************
 
@@ -21,20 +22,49 @@ const editRev = (reviewEdit) => ({
   reviewEdit
 })
 
+const deleteRev = (reviewId) => ({
+  type: DELETEREV,
+  reviewId
+});
+
 
 // ************   THUNKS ***********
 export const editReview = (review) => async (dispatch) => {
-  const response = await csrfFetch(`/api/reviews/${review.id}`, {
-    method: "PUT",
-    body: JSON.stringify(review)
-  });
-
-  if (response.ok) {
-    const updatedReview = await response.json();
-    dispatch(editRev(updatedReview))
-    return updatedReview;
-  }
+  const { id, content, rating } = review;
+  const response = await csrfFetch(`/api/reviews/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      content, rating
+    })
+  })
+  const updatedReview = await response.json();
+  dispatch(editRev(updatedReview))
 }
+
+
+export const deleteReview = (reviewId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/reviews/${reviewId}`, {
+    method: "DELETE",
+  })
+  const res = await response.json();
+  dispatch(deleteRev(reviewId))
+  return null;
+}
+
+
+// export const editReview = (review) => async (dispatch) => {
+//   const response = await csrfFetch(`/api/reviews/${review.id}`, {
+//     method: "PUT",
+//     body: JSON.stringify(review)
+//   });
+
+//   if (response.ok) {
+//     const updatedReview = await response.json();
+//     dispatch(editRev(updatedReview))
+//     return updatedReview;
+//   }
+// }
+
 
 export const getReviews = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/reviews/${id}`);
@@ -64,7 +94,6 @@ export const createReview = (review) => async (dispatch) => {
   }
 }
 
-export const
 
 // *********************** REVIEW REDUCER **********************
 
@@ -85,8 +114,19 @@ const reviewReducer = (state = {}, action) => {
       for (const review of reviews) {
         newReview[review.id] = reviews
       }
-
       return newReview
+
+    case EDITREV: {
+      const newState = { ...state };
+      newState[action.review.id] = action.review;
+      return newState;
+    }
+
+    case DELETEREV: {
+      const newState = { ...state };
+      delete newState[action.reviewId];
+      return newState;
+    }
     default:
       return state;
   }

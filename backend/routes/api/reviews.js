@@ -6,13 +6,14 @@ const Sequelize = require("sequelize")
 const Op = Sequelize.Op
 
 
-
+// WORKS
 router.get("/:id", asyncHandler(async (req, res) => {
   const id = req.params.id
   const reviews = await Review.findAll({ where: { venueId: id } })
   return res.json(reviews);
 }))
 
+// WORKS
 router.post("/", asyncHandler(async (req, res) => {
   const {
     venueId,
@@ -31,28 +32,38 @@ router.post("/", asyncHandler(async (req, res) => {
   return res.json(review)
 }))
 
-router.delete('/:id', asyncHandler(async (req, res) => {
-  const authorId = req.params.id
-  await Review.findByPk(authorId).destroy();
+// router.put("/:id", asyncHandler(async (req, res) => {
+//   const reviewId = req.params.id;
+//   const {
+//     id,
+//     venueId,
+//     rating,
+//     authorId,
+//     content,
+//     updatedAt
+//   } = req.body;
+//   const review = Review.findByPk(reviewId);
+//   // return res.json(review)
+// }))
 
-}),
-);
+router.patch("/:id", asyncHandler(async (req, res) => {
+  const { rating, content } = req.body;
+  const editedReviewId = req.params.id;
+  const editedReview = await Review(findByPk(editedReviewId))
 
-router.put("/:id", asyncHandler(async (req, res) => {
-  const reviewId = req.params.id;
-  const {
-    id,
-    venueId,
-    rating,
-    authorId,
-    content,
-    updatedAt
-  } = req.body;
-  const review = Review.findByPk(reviewId);
-  // return res.json(review)
+  await editedReview.update({
+    rating, content
+  })
+
+  return res.json(editedReview)
 }))
 
-//need routes for getOne and a patch, and a delete
+router.delete('/:id', asyncHandler(async (req, res) => {
+  const reviewId = req.params.id
+  await Review.findByPk(reviewId).destroy();
+  return res.json(null)
+}))
+
 
 module.exports = router;
 

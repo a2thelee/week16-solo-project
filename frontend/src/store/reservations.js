@@ -30,6 +30,8 @@ export const setReservation = (reserverId, venueId, date) => async (dispatch) =>
   if (response.ok) {
     const data = await response.json();
     return dispatch(setRes(data))
+  } else {
+    return alert("Please select a date")
   }
 }
 
@@ -52,9 +54,9 @@ const reservationReducer = (state = {}, action) => {
   switch (action.type) {
     case SETRES:
       newState = { ...state }
-      const key = Object.values(state).length + 1;
+      const key = Object.values(state).length + 1;        //not a good fix
       newState[key] = action.newRes;
-      // newState[action.newRes.id] = action.newRes;
+      // newState[action.newRes.id] = action.newRes;    // <-------- this is what we want. find way to fix. indexes are 1 less than where they should, hence the above
       return newState;
 
     case GETRES:

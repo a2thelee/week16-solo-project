@@ -5,7 +5,7 @@ const Sequelize = require("sequelize")
 const Op = Sequelize.Op
 const router = express.Router();
 
-
+//WORKS
 router.get('/:location', asyncHandler(async (req, res) => {
 
   const userSearchInput = req.params.location

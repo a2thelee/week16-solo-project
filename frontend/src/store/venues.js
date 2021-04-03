@@ -47,11 +47,6 @@ const venueReducer = (state = {}, action) => {
       action.list.forEach((venue) => {
         allVenues[venue.id] = venue;
       });
-      // return {
-      //   ...allVenues,
-      //   ...state,
-      //   list: action.list
-      // }
 
       return allVenues;
     }

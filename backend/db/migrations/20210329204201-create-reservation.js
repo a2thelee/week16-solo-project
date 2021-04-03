@@ -18,16 +18,12 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: "Venues" }
       },
-      gameStart: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      gameEnd: {
-        allowNull: false,
+      gameDate: {
+        // allowNull: false,
         type: Sequelize.DATE
       },
       games: {
-        allowNull: false,
+        // allowNull: false,
         type: Sequelize.TEXT
       },
       createdAt: {

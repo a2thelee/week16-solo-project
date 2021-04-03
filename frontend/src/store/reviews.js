@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf"
 
 const GETREVS = "reviews/GETREVS"
 const SETREV = "reviews/SETREV"
+const EDITREV = "reviews/EDITREV"
 
 // *********** REVIEW ACTIONS *************
 
@@ -15,11 +16,28 @@ const setRev = (reviews) => ({
   payload: reviews
 })
 
+const editRev = (reviewEdit) => ({
+  type: EDITREV,
+  reviewEdit
+})
+
 
 // ************   THUNKS ***********
+export const editReview = (review) => async (dispatch) => {
+  const response = await csrfFetch(`/api/reviews/${review.id}`, {
+    method: "PUT",
+    body: JSON.stringify(review)
+  });
 
-export const getReviews = () => async (dispatch) => {
-  const response = await csrfFetch("/api/reviews");
+  if (response.ok) {
+    const updatedReview = await response.json();
+    dispatch(editRev(updatedReview))
+    return updatedReview;
+  }
+}
+
+export const getReviews = (id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/reviews/${id}`);
 
   if (response.ok) {
     const reviews = await response.json();
@@ -45,6 +63,8 @@ export const createReview = (review) => async (dispatch) => {
     return review;
   }
 }
+
+export const
 
 // *********************** REVIEW REDUCER **********************
 

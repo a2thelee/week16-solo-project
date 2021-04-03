@@ -1,39 +1,33 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
-const { Reservation } = require('../../db/models');
-const Venue = require("../../db/models/venue.js")
+const { Reservation, Venue, User } = require('../../db/models');
 const router = express.Router();
 const Sequelize = require("sequelize")
 const Op = Sequelize.Op
+const { check, validationResult } = require("express-validator")
+const { handleValidationErrors } = require("../../utils/validation")
+
+const reservationValidations = [        //making sure non-empty date
+  check("date")
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage("Please select a valid date."),
+  handleValidationErrors
+]
 
 router.get("/:id", asyncHandler(async (req, res) => {
   const { id } = req.params;
-  let array = [];         //declare empty array to hold venue Ids after query
 
-  const reservations = await db.Reservation.findAll({ where: { reserverId: id } })      //grab all the reservations a person has, where we can also grab all the venueIds
-
-  if (reservations[0]) {
-    reservations.forEach(reservation => {
-      array.push(reservation.venueId)
-    })
-
-    const venues = await Venue.findAll({        //grabbing all the venues based on the venueIds we get from the query above on line 13
-      where: {
-        id: {
-          [Op.in]: array
-        }
-      }
-    })
-
-    return res.json(venues)
-  }
+  const reservations = await Reservation.findAll({ where: { reserverId: id } })
+  return res.json(reservations);
 }))
 
-router.post("", asyncHandler(async (req, res) => {
-  const { venueId, reserverId } = req.body;
-  const reservation = await Reservation.create({ reserverId, venueId })
+router.post("/", reservationValidations, asyncHandler(async (req, res) => {
+  const { venueId, reserverId, date } = req.body;
+  const reservation = await Reservation.create({ reserverId, venueId, date })
+  // const venue = await Venue.findByPk(reservation.venueId, { include: Reservation })
 
-  return res.json(reservation)
+  return res.json(venue)
 }))
 
 module.exports = router;

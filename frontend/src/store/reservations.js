@@ -5,9 +5,9 @@ const GETRES = "reservation/GETRES"
 
 // ********** ACTION ***********
 
-const setRes = (userId, venueId) => ({
+const setRes = (newRes) => ({
   type: SETRES,
-  payload: userId, venueId      //might need to put these inside an object
+  newRes
 })
 
 const getRes = (userId) => ({
@@ -17,13 +17,14 @@ const getRes = (userId) => ({
 
 // ************** THUNK ***************
 
-export const setReservation = (reserverId, venueId) => async (dispatch) => {
+export const setReservation = (reserverId, venueId, date) => async (dispatch) => {
 
   const response = await csrfFetch("/api/reservations", {
     method: "POST",
     body: JSON.stringify({
       venueId,
-      reserverId
+      reserverId,
+      date
     })
   })
   if (response.ok) {
@@ -46,16 +47,24 @@ export const getReservation = (userId) => async (dispatch) => {
 // ************* REDUCER **************
 
 const reservationReducer = (state = {}, action) => {
-  let newState;
+  let newState = {};
+
   switch (action.type) {
     case SETRES:
-      newState = action.payload;
+      newState = { ...state }
+      const key = Object.values(state).length + 1;
+      newState[key] = action.newRes;
+      // newState[action.newRes.id] = action.newRes;
       return newState;
 
     case GETRES:
-      newState = action.userId;
+      const array = action.reservations
+      for (let i = 0; i < array.length; i++) {
+        let key = array[i].id;
+        // newState[key] = array[i]
+        newState[i + 1] = array[i]
+      }
       return newState;
-
     default:
       return state;
   }

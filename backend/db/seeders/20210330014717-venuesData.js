@@ -107,7 +107,7 @@ module.exports = {
         state: "Massachusetts",
         city: "Boston",
         bookingImgUrl: 'www.nothing.com',
-        description: "it's just a garage and there isn't any heating!",
+        description: "Perfect place for a game!",
         openHours: new Date(),
         closeHours: new Date(),
         cost: 40.00

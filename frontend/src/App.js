@@ -44,11 +44,11 @@ function App() {
             <Venues />
           </Route>
 
-          <Route exact path="/venues:id">
+          <Route exact path="/venues/:id">
             <SingleVenue />
           </Route>
 
-          <Route exact path="/reviews:id">
+          <Route exact path="/reviews/:id">
             <ReviewCreatePage />
           </Route>
 

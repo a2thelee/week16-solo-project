@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom"
-// import { getVenues } from "../../store/venues"
+import { getVenues } from "../../store/venues"
 import { getOneVenue } from "../../store/venues"
 import { setReservation } from "../../store/reservations"
-import Reviews from "../../store/reviews"
 import { getReviews } from "../../store/reviews"
 
 import "./SingleVenue.css"
+import Reviews from "../reviews";
 
 const SingleVenue = () => {
   const { id } = useParams();         //grabbing id of venue
@@ -58,21 +58,19 @@ const SingleVenue = () => {
 
     <>
       <div className="single-venue-div">
-        {console.log(venue, '++++++++++++ venueIdPage')};
-        <h2>{venue.name}</h2>
+        <h2 className="venue-name">{venue.name}</h2>
         <ul>
           <li>{venue.address}</li>
           <li>{venue.state}</li>
           <li>{venue.city}</li>
-          <li>{venue.address}</li>
           <li>{venue.description}</li>
-          <li>Open: {venue.openHours} to {venue.closeHours}</li>
-          <li>Price per hour: {venue.cost}</li>
+          <li>Open: {venue.openHours}AM to {venue.closeHours}PM</li>
+          <li>Price per hour: ${venue.cost}</li>
         </ul>
         <img className="venue-list-picture" src={venue.bookingImgUrl} alt="Error!" />
         <Reviews />
         {sessionLinks}
-      </div>
+      </div> *
     </>
 
   )

@@ -30,11 +30,12 @@ export const getVenues = () => async (dispatch) => {
 
 export const getOneVenue = (id) => async (dispatch) => {
 
-  const response = await fetch(`/api/venues/${id}`);
+  const response = await csrfFetch(`/api/venues/${id}`);
 
   if (response.ok) {
     const venue = await response.json();
     dispatch(loadOne(venue));
+    return venue;
   }
 }
 

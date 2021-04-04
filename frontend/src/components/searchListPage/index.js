@@ -6,14 +6,16 @@ function SearchListPage() {
   const venueSearch = useSelector(state => state.search);
   const history = useHistory();
 
-  if (!venueSearch.length) {
-    history.goBack();
-  }
+  // if (!venueSearch.length) {
+  //   history.push("/");
+  // }
 
   return (
     <div>
       <ul>
+        {console.log(venueSearch)}
         {Object.values(venueSearch).map((venue, i) => (
+
           <li key={`li-${i}`}>
             <NavLink to={`/venues/${venue.id}`} key={venue.id}>
               <span>Venue: {venue.name}</span>

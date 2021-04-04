@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     city: DataTypes.STRING,
     bookingImgUrl: DataTypes.TEXT,
     description: DataTypes.TEXT,
-    openHours: DataTypes.DATE,
-    closeHours: DataTypes.DATE,
+    openHours: DataTypes.INTEGER,
+    closeHours: DataTypes.INTEGER,
     cost: DataTypes.INTEGER
   }, {});
   Venue.associate = function (models) {

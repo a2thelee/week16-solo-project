@@ -20,13 +20,13 @@ function Venues() {
   if (!venues) return null;
 
   return (
-    <div id='container'>
+    <div id='venues-container'>
       <ul>
         {Object.values(venues).map(venue => (
           <li key={`li-${venue.id}`}>
-            <NavLink to={`/venues/${venue.id}`} key={venue.id}> {console.log(venue)}
-              {/* this will be the venue image eventually*/}
-              {venue.name}
+            <NavLink to={`/venues/${venue.id}`} key={venue.id}>
+              <span>Venue: {venue.name}</span>
+              <img className="venue-list-picture" src={venue.bookingImgUrl} alt="Venue Picture"></img>
             </NavLink>
           </li>
         ))}

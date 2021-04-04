@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import Venues from "./components/Venues"
 import SingleVenue from "./components/singleVenue";
 import SearchListPage from "./components/searchListPage"
+import ReviewCreatePage from "./components/reviewCreatePage"
 
 
 import wallhaven from "./images/wallhaven.jpg"
@@ -31,6 +32,10 @@ function App() {
             <LoginFormPage />
           </Route>
 
+          <Route exact path="/list">
+            <SearchListPage />
+          </Route>
+
           <Route exact path="/signup">
             <SignupFormPage />
           </Route>
@@ -43,8 +48,8 @@ function App() {
             <SingleVenue />
           </Route>
 
-          <Route exact path="/list">
-            <SearchListPage />
+          <Route exact path="/reviews:id">
+            <ReviewCreatePage />
           </Route>
 
         </Switch>

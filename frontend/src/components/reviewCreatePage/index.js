@@ -26,4 +26,4 @@ function ReviewCreatePage() {
 }
 
 
-export const ReviewCreatePage
+export default ReviewCreatePage

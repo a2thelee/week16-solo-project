@@ -5,13 +5,20 @@ body {
 
 /*picture*/
 #wallpaper {
-  position: relative;
+  position: absolute;
   top: 90px;
   left: 140px;
   opacity: .8;
   max-width: 75%;
   max-height: 90%;
   border-radius: 10px;
+  z-index: -1;
 }
 
 /* universal form */
+.venue-list-picture{
+  max-height: 200px;
+  max-width: 200px;
+  border-radius: 10px;
+  z-index: 1;
+}

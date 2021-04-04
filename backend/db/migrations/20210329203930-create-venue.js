@@ -39,11 +39,11 @@ module.exports = {
       },
       openHours: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.INTEGER
       },
       closeHours: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.INTEGER
       },
       cost: {
         allowNull: false,

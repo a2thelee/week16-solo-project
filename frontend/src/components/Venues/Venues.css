@@ -1,4 +1,14 @@
 #venues-container{
-  background-color: red;
   width: 100%;
+}
+
+/* .venue-list-picture{
+  max-height: 200px;
+  max-width: 200px;
+  border-radius: 10px;
+  z-index: 1;
+} */
+
+.venue-list-picture:hover{
+  border-color: white;
 }

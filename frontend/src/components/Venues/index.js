@@ -11,7 +11,7 @@ function Venues() {
   }, [dispatch])
 
   const venues = useSelector(state => {     //grabs the current state of all our venues
-    return state.venue.list
+    return state.venue
   });
 
   // const [title, setTitle] = useState("")
@@ -20,13 +20,13 @@ function Venues() {
   if (!venues) return null;
 
   return (
-    <div id='venueContainer'>
+    <div id='container'>
       <ul>
         {Object.values(venues).map(venue => (
           <li key={`li-${venue.id}`}>
-            <NavLink to={`/venues/${venue.id}`} key={venue.id}>
+            <NavLink to={`/venues/${venue.id}`} key={venue.id}> {console.log(venue)}
               {/* this will be the venue image eventually*/}
-              {venue.title}
+              {venue.name}
             </NavLink>
           </li>
         ))}

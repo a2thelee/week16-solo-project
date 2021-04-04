@@ -4,6 +4,7 @@ const GETREVS = "reviews/GETREVS"
 const SETREV = "reviews/SETREV"
 const EDITREV = "reviews/EDITREV"
 const DELETEREV = "reviews/DELETEREV"
+const GETUSERREVS = "reviews/GETUSERREVS"   //getting reviews by user. TESTING
 
 // *********** REVIEW ACTIONS *************
 
@@ -27,8 +28,21 @@ const deleteRev = (reviewId) => ({
   reviewId
 });
 
+const getUserRevs = (userId) => ({      //getting reviews by user. TESTING
+  type: GETUSERREVS,
+  userId
+})
+
 
 // ************   THUNKS ***********
+export const getUserReviews = (userId) => async (dispatch) => {     //getting reviews by user. TESTING
+  const response = await csrfFetch(`/api/reviews/`)
+
+  const userReviews = await response.json();
+  dispatch(getUserRevs(userReviews))
+
+}
+
 export const editReview = (review) => async (dispatch) => {
   const { id, content, rating } = review;
   const response = await csrfFetch(`/api/reviews/${id}`, {
@@ -107,14 +121,12 @@ const reviewReducer = (state = {}, action) => {
       return allReviews;
     }
 
-    case SETREV:
-      const reviews = action.payload;
-      const newReview = {};
+    case SETREV: {
+      const newReview = { ...state };
 
-      for (const review of reviews) {
-        newReview[review.id] = reviews
-      }
+      newReview[action.reviews.id] = action.reviews;
       return newReview
+    }
 
     case EDITREV: {
       const newState = { ...state };
@@ -127,6 +139,15 @@ const reviewReducer = (state = {}, action) => {
       delete newState[action.reviewId];
       return newState;
     }
+
+    case GETUSERREVS: {
+      const allReviews = {};
+      action.list.forEach((review) => {
+        allReviews[review.id] = review
+      })
+      return allReviews;
+    }
+
     default:
       return state;
   }

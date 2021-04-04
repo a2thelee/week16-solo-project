@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
-import { getReservation } from "react-redux"
+import { getReservation } from "../../store/reservations"
+
+import "./reservations.css"
 
 
 function Reservations() {
@@ -8,7 +10,7 @@ function Reservations() {
   const state = useSelector(state => state.session.user.id)
 
   useEffect(() => {
-    dispatch(getReservation(sessionUser))
+    dispatch(getReservation(state))
   }, dispatch, state)
 
 
@@ -18,3 +20,5 @@ function Reservations() {
     </>
   )
 }
+
+export default Reservations;

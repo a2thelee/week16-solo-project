@@ -37,7 +37,6 @@ function Navigation({ isLoaded }) {
           <NavLink to="/login">Log In</NavLink>
           <NavLink to="/signup">Sign Up</NavLink>
           <NavLink to="/venues">Venues</NavLink>
-          <SearchBar />
         </div>
 
       </>
@@ -50,6 +49,9 @@ function Navigation({ isLoaded }) {
       <li>
         <NavLink exact to="/">AirTTG</NavLink>
         {isLoaded && sessionLinks}
+      </li>
+      <li>
+        <SearchBar />
       </li>
     </ul>
   );

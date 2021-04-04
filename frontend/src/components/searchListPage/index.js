@@ -6,9 +6,9 @@ function SearchListPage() {
   const venueSearch = useSelector(state => state.search);
 
   return (
-    <div>
+    <div id="venues-container">
       <ul>
-        {venueSearch.map(venue => (
+        {Object.values(venueSearch).map(venue => (
           <li key={`li-${venue.id}`}>
             <NavLink to={`/venues/${venue.id}`} key={venue.id}>Venue Name: {venue.name}</NavLink>
           </li>

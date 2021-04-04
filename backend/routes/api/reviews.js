@@ -13,6 +13,14 @@ router.get("/:id", asyncHandler(async (req, res) => {
   return res.json(reviews);
 }))
 
+
+//GET USER REVIEWS
+router.get("/", asyncHandler(async (req, res) => {
+  const id = req.params.id
+  const userReviews = await Review.findAll({ where: { userId: id } })
+  return res.json(userReviews);
+}))
+
 // WORKS
 router.post("/", asyncHandler(async (req, res) => {
   const {
@@ -32,24 +40,11 @@ router.post("/", asyncHandler(async (req, res) => {
   return res.json(review)
 }))
 
-// router.put("/:id", asyncHandler(async (req, res) => {
-//   const reviewId = req.params.id;
-//   const {
-//     id,
-//     venueId,
-//     rating,
-//     authorId,
-//     content,
-//     updatedAt
-//   } = req.body;
-//   const review = Review.findByPk(reviewId);
-//   // return res.json(review)
-// }))
-
+//WORKS!!!
 router.patch("/:id", asyncHandler(async (req, res) => {
   const { rating, content } = req.body;
   const editedReviewId = req.params.id;
-  const editedReview = await Review(findByPk(editedReviewId))
+  const editedReview = await Review.findByPk(editedReviewId)
 
   await editedReview.update({
     rating, content
@@ -58,11 +53,15 @@ router.patch("/:id", asyncHandler(async (req, res) => {
   return res.json(editedReview)
 }))
 
+//WORKS!!!!!
 router.delete('/:id', asyncHandler(async (req, res) => {
   const reviewId = req.params.id
-  await Review.findByPk(reviewId).destroy();
+  const review = await Review.findByPk(reviewId)
+  review.destroy()
   return res.json(null)
 }))
+
+
 
 
 module.exports = router;

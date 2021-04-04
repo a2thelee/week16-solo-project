@@ -3,6 +3,7 @@ body {
   background-color: #94b5c0
 }
 
+/*picture*/
 #wallpaper {
   position: relative;
   top: 90px;
@@ -12,3 +13,5 @@ body {
   max-height: 90%;
   border-radius: 10px;
 }
+
+/* universal form */

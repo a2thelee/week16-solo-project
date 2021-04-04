@@ -1,3 +1,4 @@
-.venueContainer{
-  background-color: red
+#venues-container{
+  background-color: red;
+  width: 100%;
 }

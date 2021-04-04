@@ -9,6 +9,7 @@ import Venues from "./components/Venues"
 import SingleVenue from "./components/singleVenue";
 import SearchListPage from "./components/searchListPage"
 
+
 import wallhaven from "./images/wallhaven.jpg"
 import "./index.css";
 

@@ -43,9 +43,9 @@ function Reviews() {
         {Object.values(reviews).map((review, i) => (
           <>
 
-            <li key={`1-${i}`}>{review.content}</li>
+            <li key={`1-${i}`}>{review?.content}</li>
 
-            <li key={`2-${i}`}>Score: {review.rating}</li>
+            <li key={`2-${i}`}>Score: {review?.rating}</li>
 
           </>
         ))}

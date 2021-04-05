@@ -16,7 +16,7 @@ function ReviewCreatePage() {
 
 
   const authorId = useSelector((state) => state.session.user.id);
-  console.log(authorId);
+  // console.log(authorId);
 
 
   const handleSubmit = (e) => {
@@ -29,7 +29,7 @@ function ReviewCreatePage() {
   return (
     <div className="create-review-container">
       <form className="create-review-form" onSubmit={handleSubmit}>
-        <h2>Leave a Review!</h2>
+        <h2>Leave a Review! (Coming Soon!)</h2>
 
         <ul>
           {validationErrors.map((error, i) => (
@@ -38,6 +38,7 @@ function ReviewCreatePage() {
             </li>
           ))}
         </ul>
+
         <label>What'd You Think?</label>
         <input
           type="text" value={content} onChange={(e) => setContent(e.target.value)} required id="review-text-box"

@@ -127,7 +127,7 @@ const reviewReducer = (state = {}, action) => {
     case SETREV: {
       const newReview = { ...state };
 
-      newReview[action.reviews.id] = action.reviews;
+      newReview[action?.reviews?.id] = action?.reviews;
       return newReview
     }
 

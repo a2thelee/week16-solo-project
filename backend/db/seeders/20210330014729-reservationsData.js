@@ -30,10 +30,41 @@ module.exports = {
       },
       {
         reserverId: 3,
-        venueId: 2,
+        venueId: 1,
         gameDate: new Date(),
         games: "axis and allies"
       },
+      {
+        reserverId: 3,
+        venueId: 6,
+        gameDate: new Date(),
+        games: "dnd pathfinder"
+      },
+      {
+        reserverId: 1,
+        venueId: 1,
+        gameDate: new Date(),
+        games: "monopoly and triopoly"
+      },
+      {
+        reserverId: 2,
+        venueId: 5,
+        gameDate: new Date(),
+        games: "root"
+      },
+      {
+        reserverId: 3,
+        venueId: 1,
+        gameDate: new Date(),
+        games: "the game of life"
+      },
+      {
+        reserverId: 1,
+        venueId: 3,
+        gameDate: new Date(),
+        games: "Risk: 2210 AD"
+      },
+
     ], {});
 
   },

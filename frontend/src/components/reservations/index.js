@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { getReservation } from "../../store/reservations"
+import { NavLink } from "react-router-dom"
+import { parseISO } from "date-fns"
 
 import "./reservations.css"
 
@@ -13,11 +15,29 @@ function Reservations() {
     dispatch(getReservation(state))
   }, dispatch, state)
 
+  const reservationObjects = useSelector(state => state.reservation)
+
+  if (!state) return null;
+  if (!reservationObjects) return null;
+
+  const reservations = Object.values(reservationObjects)
 
   return (
-    <>
-      <h3> Hi these are reservations! </h3>
-    </>
+    <div className='reservation'>
+      <h2>Upcoming Games!</h2>
+      <ul className='reservation-list'>
+        {reservations.map((item, i) => (
+
+          <li key={`li-${i}`}>
+            <NavLink to={`/venues/${item.venueId}`} key={i} className='navlink'>
+              { }
+              {`${parseISO(item.gameDate).toString().slice(0, 10)}`}
+              {/* <img src={item.bookingImgUrl} alt='booking'/> */}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 

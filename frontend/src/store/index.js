@@ -5,6 +5,7 @@ import venueReducer from "./venues"
 import searchReducer from "./search"
 import reservationReducer from "./reservations"
 import reviewReducer from "./reviews"
+import userReviewReducer from "./userReviews"
 
 const rootReducer = combineReducers({
   // add reducer functions here
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   venue: venueReducer,
   search: searchReducer,
   reservation: reservationReducer,
-  reviews: reviewReducer
+  reviews: reviewReducer,
+  userReview: userReviewReducer
 });
 
 let enhancer;

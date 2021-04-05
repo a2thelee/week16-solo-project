@@ -1,0 +1,23 @@
+.create-review-container{
+  background-color: #EEEBDD;
+  width: 15%;
+  border-radius: 10px;
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.create-review-form {
+  position: relative;
+  max-width: 20%;
+  max-height: 710px;
+}
+
+#review-text-box{
+  height: 60px;
+}

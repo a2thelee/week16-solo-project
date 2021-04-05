@@ -10,9 +10,9 @@ const setRes = (newRes) => ({
   newRes
 })
 
-const getRes = (userId) => ({
+const getRes = (reservations) => ({
   type: GETRES,
-  userId
+  reservations
 })
 
 // ************** THUNK ***************

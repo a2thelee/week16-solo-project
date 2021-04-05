@@ -92,6 +92,7 @@ export const getReviews = (id) => async (dispatch) => {
 
 export const createReview = (review) => async (dispatch) => {
   const { venueId, rating, authorId, content } = review;
+
   const response = await csrfFetch("/api/reviews", {
     method: "POST",
     body: JSON.stringify({
@@ -101,8 +102,10 @@ export const createReview = (review) => async (dispatch) => {
       content
     })
   })
+
   if (response.ok) {
     const review = await response.json();
+    console.log(review)
     dispatch(setRev(review))
     return review;
   }

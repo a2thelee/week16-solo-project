@@ -9,6 +9,7 @@ import Venues from "./components/Venues"
 import SingleVenue from "./components/singleVenue";
 import SearchListPage from "./components/searchListPage"
 import ReviewCreatePage from "./components/reviewCreatePage"
+import LandingPage from "./components/LandingPage"
 
 
 import wallhaven from "./images/wallhaven.jpg"
@@ -27,6 +28,10 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+
+          <Route exact path="/">
+            <LandingPage />
+          </Route>
 
           <Route exact path="/login">
             <LoginFormPage />

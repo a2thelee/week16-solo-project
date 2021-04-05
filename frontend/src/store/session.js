@@ -72,6 +72,21 @@ export const logout = () => async (dispatch) => {
   return response;
 };
 
+export const demoLogin = () => async (dispatch) => {
+  //console.log("asdfdsafdfa")
+  const response = await csrfFetch('/api/session', {
+    method: 'POST',
+    body: JSON.stringify({
+      credential: "Demo-lition",
+      password: "password"
+    }),
+  })
+  const data = await response.json()
+  dispatch(setUser(data.user));   //post route from api session.js
+  return response;
+}
+
+
 
 
 

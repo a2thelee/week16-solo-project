@@ -6,8 +6,8 @@ body {
 /*picture*/
 #wallpaper {
   position: absolute;
-  top: 90px;
-  left: 140px;
+  top: 120px;
+  left: 180px;
   opacity: .8;
   max-width: 75%;
   max-height: 90%;
